@@ -1,0 +1,24 @@
+class <%= metadata.name %>::service inherits <%= metadata.name %> {
+
+  #
+  validate_bool($<%= metadata.name %>::manage_docker_service)
+  validate_bool($<%= metadata.name %>::manage_service)
+  validate_bool($<%= metadata.name %>::service_enable)
+
+  validate_re($<%= metadata.name %>::service_ensure, [ '^running$', '^stopped$' ], "Not a valid daemon status: ${<%= metadata.name %>::service_ensure}")
+
+  $is_docker_container_var=getvar('::eyp_docker_iscontainer')
+  $is_docker_container=str2bool($is_docker_container_var)
+
+  if( $is_docker_container==false or
+      $<%= metadata.name %>::manage_docker_service)
+  {
+    if($<%= metadata.name %>::manage_service)
+    {
+      service { $<%= metadata.name %>::params::service_name:
+        ensure => $<%= metadata.name %>::service_ensure,
+        enable => $<%= metadata.name %>::service_enable,
+      }
+    }
+  }
+}
