@@ -1,3 +1,3 @@
-class eyp-puppethelloworld::config inherits <%= metadata.name %> {
+class puppethelloworld::config inherits <%= metadata.name %> {
 
 }

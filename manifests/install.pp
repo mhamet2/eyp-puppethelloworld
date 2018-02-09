@@ -1,9 +1,9 @@
-class eyp-puppethelloworld::install inherits <%= metadata.name %> {
+class puppethelloworld::install inherits <%= metadata.name %> {
 
-  if($eyp-puppethelloworld::manage_package)
+  if($puppethelloworld::manage_package)
   {
-    package { $eyp-puppethelloworld::params::package_name:
-      ensure => $eyp-puppethelloworld::package_ensure,
+    package { $puppethelloworld::params::package_name:
+      ensure => $puppethelloworld::package_ensure,
     }
   }
 

@@ -1,7 +1,7 @@
-class eyp-puppethelloworld::params {
+class puppethelloworld::params {
 
-  $package_name='eyp-puppethelloworld'
-  $service_name='eyp-puppethelloworld'
+  $package_name='puppethelloworld'
+  $service_name='puppethelloworld'
 
   case $::osfamily
   {
